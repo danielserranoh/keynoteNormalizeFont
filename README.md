@@ -10,29 +10,29 @@ Essentially, the script goes throut all the text elements and changes the font t
 This is the script in Apple Script:
 
 
--- Define the new font
-set newFont to "InsertYourFontHere"
-  -- The font name must be the name of the font as shown in the Font Book App
+	-- Define the new font
+	set newFont to "InsertYourFontHere"
+  	-- The font name must be the name of the font as shown in the Font Book App
 
---check if Keynote is running
-if running of application "Keynote" is true then
+	--check if Keynote is running
+	if running of application "Keynote" is true then
 	
-	tell application "Keynote"
-		tell the front document
-			-- Change the font of the text item of every master slide to newFont
-			set numberOfMasterSlides to the number of master slides
-			repeat with thisMasterSlideNumber from 1 to numberOfMasterSlides
-				tell master slide thisMasterSlideNumber
-					-- set the font of the object text of every iWork container containing a font to newFont
-					set the font of the object text of every text item to newFont
-					set the font of the object text of every shape to newFont
-					set the font of the object text of the default title item to newFont
-					set the font of the object text of the default body item to newFont
-					set the font name of the range of every table to newFont
-				end tell
-			end repeat
+		tell application "Keynote"
+			tell the front document
+				-- Change the font of the text item of every master slide to newFont
+				set numberOfMasterSlides to the number of master slides
+				repeat with thisMasterSlideNumber from 1 to numberOfMasterSlides
+				  tell master slide thisMasterSlideNumber
+				  -- set the font of the object text of every iWork container containing a font to newFont
+				    set the font of the object text of every text item to newFont
+				    set the font of the object text of every shape to newFont
+				    set the font of the object text of the default title item to newFont
+				    set the font of the object text of the default body item to newFont
+				    set the font name of the range of every table to newFont
+				  end tell
+				end repeat
+			end tell
 		end tell
-	end tell
-end if
+	end if
 
 
